@@ -1,5 +1,12 @@
 import './App.css';
-import data from "./data"
+import data from "./data";
+import React from "react";
+import {
+    BrowserRouter,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 function App() {
 
@@ -11,6 +18,7 @@ function App() {
     document.querySelector('.sidebar').classList.remove('open');
   }
   return (
+    <BrowserRouter>
     <div className="grid-container">
     <header className="header">
         <div className="brand">
@@ -41,6 +49,8 @@ function App() {
     </aside>
     <main className="main">
         <div className="content">
+            <Route path='/products/:id' component={ProductScreen} />
+            <Route path='/' exact={true} component={HomeScreen} />
             <ul className="products">
               {
                 data.products.map(product => <li>
@@ -55,17 +65,6 @@ function App() {
                   </div>
               </li>)
               }
-                <li>
-                    <div className="product"> 
-                        <img className="product-image" src="/images/img1.jpg" alt="product"/>
-                        <div className="product-name">
-                            <a href="product.html">AMD Ryzen 5 3600 6-Core, 12-Thread Unlocked Desktop Processor with Wraith Stealth Cooler</a>
-                        </div>
-                        <div className="product-brand">AMD</div>
-                        <div className="product-price">$500</div>
-                        <div className="product-rating">4.5 Stars (10 Reviews)</div>
-                    </div>
-                </li>
             </ul>   
         </div>
     </main>
@@ -73,6 +72,7 @@ function App() {
         All Rights Reserved.
     </footer>
 </div> 
+</BrowserRouter>
   );
 }
 
