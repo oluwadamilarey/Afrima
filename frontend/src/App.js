@@ -57,8 +57,8 @@ function App() {
     <footer className="footer">
         All Rights Reserved.
     </footer>
-</div> 
-</BrowserRouter>
+    </div> 
+    </BrowserRouter>
   );
 }
 
